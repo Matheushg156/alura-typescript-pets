@@ -15,7 +15,7 @@ let listaDePets: TipoPet[] = [];
 export default class PetController {
     constructor(private repository: PetRepository) {}
 
-    criaPet(req: Request, res: Response) {
+    async criaPet(req: Request, res: Response) {
         const {
             nome,
             especie,
@@ -31,14 +31,9 @@ export default class PetController {
             return res.status(400).json({ mensagem: "Especie inválida" });
         }
 
-        const novoPet: PetEntity = new PetEntity();
-        novoPet.id = geraId();
-        novoPet.nome = nome;
-        novoPet.especie = especie;
-        novoPet.dataDeNascimento = dataDeNascimento;
-        novoPet.adotado = adotado;
+        const novoPet: PetEntity = new PetEntity(nome, especie, dataDeNascimento, adotado);
         
-        this.repository.criaPet(novoPet);
+        await this.repository.criaPet(novoPet);
 
         return res.status(201).json(novoPet);
     }
