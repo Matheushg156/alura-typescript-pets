@@ -1,16 +1,7 @@
 import { Request, Response } from "express";
-import type TipoPet from "../tipos/TipoPet";
 import EnumEspecie from "../enum/EnumEspecie";
 import PetRepository from "../repositories/PetRepository";
 import { PetEntity } from "../entities/PetEntity";
-
-let id = 0;
-function geraId() {
-  id = id + 1;
-  return id;
-}
-
-let listaDePets: TipoPet[] = [];
 
 export default class PetController {
     constructor(private repository: PetRepository) {}

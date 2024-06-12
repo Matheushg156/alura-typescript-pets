@@ -12,9 +12,11 @@ export default class PetRepository implements InterfacePetRepository {
     async criaPet(pet: PetEntity): Promise<void> {
       await this.repository.save(pet);
     }
+
     async listaPets(): Promise<PetEntity[]> {
         return await this.repository.find();
     }
+
     async atualizaPet(
         id: number,
         newData: PetEntity
