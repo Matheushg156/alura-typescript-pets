@@ -17,4 +17,6 @@ router.put("/:id", (req, res) => adotanteController.atualizaAdotante(req, res));
 
 router.delete("/:id", (req, res) => adotanteController.deletaAdotante(req, res)); // Rota para deletar um adotante
 
+router.patch("/:id", (req, res) => adotanteController.atualizaEnderecoAdotante(req, res)); // Rota para atualizar o endereço de um adotante
+
 export default router;
